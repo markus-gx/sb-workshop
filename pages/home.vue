@@ -1,11 +1,12 @@
 <template>
   <div>
-    <h1>Storyblok Content</h1>
-    {{state}}
+    <StoryblokModules :modules="state?.story?.content?.body"/>
   </div>
 </template>
 
 <script setup>
+import StoryblokModules from "../components/organisms/StoryblokModules";
+
 const api = useStoryblokApi()
 const {data} = await useAsyncData('home', async () => api.get('cdn/stories/home', {version: 'draft'}))
 
